@@ -19,7 +19,7 @@ Christopher FUHRMAN<br/>
 Professor in Software and IT Engineering<br/>
 École de technologie supérieure (ETS)
 
-Slides supporting [this blog entry](https://fuhrmanator.github.io/2019/07/29/AnalyzingJavaWithMoose.html).
+<span style="background-color:lightgreen">`tiny.cc/moose-tuto`</span> supporting [this blog entry](https://fuhrmanator.github.io/2019/07/29/AnalyzingJavaWithMoose.html).
 
 ---
 
