@@ -245,3 +245,9 @@ Analyze other languages (experimental):
 - C# - [roslyn2famix](https://github.com/feenkcom/roslyn2famix)
 - C++ - [VerveineC-Cpp](https://github.com/jecisc/VerveineC-Cpp/) was started but not quite finished
 - Fortran - [VerveineF](https://github.com/NicolasAnquetil/VerveineF)
+
+---
+
+# Feedback
+
+Please leave me feedback at the bottom of the [blog entry](https://fuhrmanator.github.io/2019/07/29/AnalyzingJavaWithMoose.html), or via email: [Christopher.Fuhrman@etsmtl.ca](mailto:Christopher.Fuhrman@etsmtl.ca)
