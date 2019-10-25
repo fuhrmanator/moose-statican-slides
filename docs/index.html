@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>title</title>
+  <title>Tutorial on Static Analysis of Java with Moose</title>
 
   <meta name="description" content="">
   <meta name="author" content="">
@@ -263,6 +263,10 @@
 
 <body>
   
+<div id="logo" style="position: fixed; top: 20px; left: 20px; z-index: 1">
+    <img src="https://www.etsmtl.ca/getmedia/4efcf5f0-b7ec-4429-a5d8-28fd4571039c/ETS-rouge-devise-ecran-fond_transparent" />
+</div>
+
 
   <div class="reveal">
 
@@ -276,6 +280,10 @@
         <section >
             
             <h1><a id="user-content-static-analysis-of-java-with-moose" class="anchor" href="#static-analysis-of-java-with-moose" aria-hidden="true"></a>Static Analysis of Java with Moose</h1>
+<p>Christopher FUHRMAN<br/>
+Professor in Software and IT Engineering<br/>
+École de technologie supérieure (ETS)</p>
+<p>Slides supporting <a href="https://fuhrmanator.github.io/2019/07/29/AnalyzingJavaWithMoose.html">this blog entry</a>.</p>
 
             </section>
     
@@ -344,6 +352,21 @@
         <section >
             
             <h1><a id="user-content-preliminaries" class="anchor" href="#preliminaries" aria-hidden="true"></a>Preliminaries</h1>
+<p>Install the following for this tutorial</p>
+<ul>
+<li><code>java</code> (command in path) JRE v. 8+</li>
+<li><code>git</code> (command in path)</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h1><a id="user-content-preliminaries-pharo" class="anchor" href="#preliminaries-pharo" aria-hidden="true"></a>Preliminaries Pharo</h1>
 <ul>
 <li><a href="http://pharo.org/download">Install and run the Pharo Launcher</a>.</li>
 <li>Copy <code>Moose-8</code> image from the Inria CI:
@@ -367,8 +390,12 @@
         
             <section >
                 <h2><a id="user-content-cloning-a-project-from-github-1" class="anchor" href="#cloning-a-project-from-github-1" aria-hidden="true"></a>Cloning a project from GitHub</h2>
-<p>Clone with <code>MooseEasyUtility</code></p>
-<p>In a Moose Playground (<kbd>CTRL</kbd>+<kbd>O</kbd>+<kbd>W</kbd>):</p>
+<p>Clone using</p>
+<pre><code class="language-bash">git clone ...
+</code></pre>
+<p>-or-</p>
+<p>Clone with <code>MooseEasyUtility</code>.
+In a Moose Playground (<kbd>CTRL</kbd>+<kbd>O</kbd>+<kbd>W</kbd>):</p>
 <pre><code class="language-smalltalk">javaProjectFileRef := MooseEasyUtility cloneGitHubRepo:
     'https://github.com/bethrobson/Head-First-Design-Patterns'.
 </code></pre>
@@ -382,45 +409,147 @@
 
 
     
+    <section>
         <section >
-            
             <h2><a id="user-content-creating-a-moose-model" class="anchor" href="#creating-a-moose-model" aria-hidden="true"></a>Creating a Moose Model</h2>
 <img src="https://www.plantuml.com/plantuml/svg/JP11Yy9038Nl-HM1lUXV62ykiWih3XHanKiFiKrrR3gHcMb1V_t6hWTlUUHxxv6iSw5Kna40vWd0RKGZuvOcmblIApTb1MwMMSVKC3RQSWqV4iwNSfAHNKKflnn5SQ2UyVlJ_nnnC59mSU0qSOYyNQxURNx_XLqGot8xfVP5QuTlPLRjLItTFvSrT9fwS8UGHvBmu7yFB2gXM7xzpWgU1DAPGWHNSJ8v84MIUmxPm0ibDOfZEqVPrNg3jKdxmHy0" class="reveal stretch plain">
 
             </section>
+        
+            <section >
+                <h2><a id="user-content-creating-a-moose-model-1" class="anchor" href="#creating-a-moose-model-1" aria-hidden="true"></a>Creating a Moose Model</h2>
+<p>We will parse Java source to a Moose Model using <a href="https://github.com/moosetechnology/VerveineJ">VerveineJ</a>.</p>
+<ol>
+<li>Install VerveineJ in a Moose Playground as follows:</li>
+</ol>
+<pre><code class="language-smalltalk">verveineJFileRef := MooseEasyUtility cloneGitHubRepo:
+    'https://github.com/moosetechnology/VerveineJ'.
+</code></pre>
+<blockquote>
+<p>You can also install it by cloning the repo in a command line.</p>
+</blockquote>
+
+            </section>
+        
+            <section >
+                <h2><a id="user-content-creating-a-moose-model-2" class="anchor" href="#creating-a-moose-model-2" aria-hidden="true"></a>Creating a Moose Model</h2>
+<ol start="2">
+<li>Start the <code>FamixMaker</code> tool in the menu <strong>Moose &gt; Moose Tools &gt; Famix Maker</strong> to produce a <code>tmp/HFDP.mse</code> Moose Model</li>
+</ol>
+<img src="images/FamixMakerDialog.png" class="plain reveal stretch">
+
+            </section>
+        
+
+    </section>
     
 
 
 
     
+    <section>
         <section >
-            
             <h2><a id="user-content-loading-model-in-moose" class="anchor" href="#loading-model-in-moose" aria-hidden="true"></a>Loading model in Moose</h2>
 <img src="https://www.plantuml.com/plantuml/svg/JP313W5138RlVOecBhp2k10X8IQH275ngDqkGtSgCxCIdbuj1xV-wVVtRpl9XLBfMW7eAm0t4usCAteGtfDUkIfZSBtCsgMAiTAQZ-0sbFAFAuejtHWNKxyyO6jzmU6UquD3vDN8_7uxnoQ8-GOIpfToaexTMgd-qThWNyJud_AgbkC_s14QJJTm-v0xal3Yhnk66w5OTdvjKHy2wKmXsegSJBP8aUIPGpRmGacDubZte-nglSF4fFtW3G00" class="reveal stretch plain">
 
             </section>
+        
+            <section >
+                <h2><a id="user-content-loading-model-in-moose-1" class="anchor" href="#loading-model-in-moose-1" aria-hidden="true"></a>Loading model in Moose</h2>
+<p>In a Moose Playground, execute:</p>
+<pre><code class="language-smalltalk">&quot;Load the moose Model with some error checking&quot;
+| mseFileRef mseStream mooseModel |
+mseFileRef := 'tmp/HFDP.mse' asFileReference. &quot;Generated by FamixMaker&quot;
+mseStream := mseFileRef readStream.
+mseStream
+	ifNotNil: [ 
+		mooseModel := MooseModel importFromMSEStream: mseStream. 
+		mooseModel rootFolder:
+      'tmp/MooseEasyRepos/bethrobson__Head-First-Design-Patterns'.
+		mooseModel install. &quot;So it appears in the Panel&quot;
+		mseStream close. ]
+	ifNil: [ self error: 
+    'Could not load MSE file into Moose: ' , mseFileRef asString ].
+</code></pre>
+
+            </section>
+        
+
+    </section>
     
 
 
 
     
+    <section>
         <section >
-            
-            <h2><a id="user-content-visualizing-the-model-uml" class="anchor" href="#visualizing-the-model-uml" aria-hidden="true"></a>Visualizing the model (UML)</h2>
+            <h2><a id="user-content-visualizing-the-model-plantuml" class="anchor" href="#visualizing-the-model-plantuml" aria-hidden="true"></a>Visualizing the model (PlantUML)</h2>
 <img src="https://www.plantuml.com/plantuml/svg/JO_12i9034Jl-Og0b_eBzQA8Wc914CMBXzYckZRTbDsje5zlMZruov0taymy9WgfRmLWd03ofQXdtDAJi0lwu3BD81zbr3wKZALMV85yJo7-kAJOKiEuNXIRCxQs5ynE79xiF6-dvYyEAwoT3BwTKlLZjCQ_u05JjSnYM5wWrj30HDpjdgxIStvoiITnR_ww8TiB-NGiTdPWO95kvBmzni5aY-H9Nj550-yKr2ZsrHXgNRM3kKbh_W40" class="reveal stretch plain">
 
             </section>
+        
+            <section >
+                <h2><a id="user-content-visualizing-the-model-plantuml-1" class="anchor" href="#visualizing-the-model-plantuml-1" aria-hidden="true"></a>Visualizing the model (PlantUML)</h2>
+<ul>
+<li>
+<p>Click <strong>Moose &gt; Moose Projects &gt; Load PlantUML Gizmo</strong> to load the project.</p>
+</li>
+<li>
+<p>Invoke the GUI with the following command in a Moose Playground:</p>
+<pre><code class="language-smalltalk">PUGizmoForMoose open.
+</code></pre>
+</li>
+</ul>
+
+            </section>
+        
+            <section >
+                <h2><a id="user-content-visualizing-the-model-plantuml-2" class="anchor" href="#visualizing-the-model-plantuml-2" aria-hidden="true"></a>Visualizing the model (PlantUML)</h2>
+<p>The following browser should appear:</p>
+<img src="images/PlantUMLMooseOpen.png" class="plain reveal stretch">
+
+            </section>
+        
+            <section >
+                <h2><a id="user-content-visualizing-the-model-plantuml-3" class="anchor" href="#visualizing-the-model-plantuml-3" aria-hidden="true"></a>Visualizing the model (PlantUML)</h2>
+<p>See the <a href="https://fuhrmanator.github.io/2019/07/29/AnalyzingJavaWithMoose.html">blog entry</a> for details.</p>
+
+            </section>
+        
+
+    </section>
     
 
 
 
     
+    <section>
         <section >
-            
             <h2><a id="user-content-analyzing-the-model" class="anchor" href="#analyzing-the-model" aria-hidden="true"></a>Analyzing the model</h2>
 <img src="https://www.plantuml.com/plantuml/svg/JOz12i9034NtEKN0ZLvXt2YYe5WeYEB6HMnJ7KqdCZCLzFIcrOMxVFvx7p9BcMBkMW4OBW2t40sC6teIFgBUkCfJS4DCsiMAiTAQJ-1AYkd7PSMMxeohUR4-OckzuFZ0ySa-y6PYVh5ROkEbzxPAzO_H1l-6UqpLDek-F46ZyGxku5D7uj_yTM1S2eMyBxOssnD85_81Hk8lrtoMZbt9qOeMAP2yaa-cN2cgyHpgOTH-rGVCBDhd7m00" class="reveal stretch plain">
 
             </section>
+        
+            <section >
+                <h2><a id="user-content-analyzing-the-model-1" class="anchor" href="#analyzing-the-model-1" aria-hidden="true"></a>Analyzing the model</h2>
+<p>There are some other ways to use Pharo to do analyses on a Java model. Benoît Verhaeghe has a <a href="https://badetitou.github.io/misc/moose/pharo/2019/09/13/OOAnalysis/">complementary blog entry</a> to show such analyses.</p>
+<p>Execute the following in a Moose Playground:</p>
+<pre><code class="language-smalltalk">Metacello new
+    githubUser: 'badetitou' project: 'OOAnalysis' commitish: 'master' path: '.';
+    baseline: 'OOAnalysis';
+    load
+</code></pre>
+
+            </section>
+        
+            <section >
+                <h2><a id="user-content-analyzing-the-model-2" class="anchor" href="#analyzing-the-model-2" aria-hidden="true"></a>Analyzing the model</h2>
+<p>Explore the <code>&lt;scripts&gt;</code> in</p>
+
+            </section>
+        
+
+    </section>
     
 
 
@@ -438,7 +567,7 @@
     Reveal.initialize({
 
         controls: true,
-        controlsTutorial: true,
+        controlsTutorial: false,
         controlsLayout: 'bottom-right',
         controlsBackArrows: 'faded',
         progress: true,
@@ -464,9 +593,9 @@
         mouseWheel: false,
         hideAddressBar: true,
         previewLinks: false,
-        transition: 'default',
+        transition: 'convex',
         transitionSpeed: 'default',
-        backgroundTransition: 'default',
+        backgroundTransition: 'convex',
         viewDistance: 3,
         parallaxBackgroundImage: '',
         parallaxBackgroundSize: '',
