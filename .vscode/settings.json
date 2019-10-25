@@ -1,0 +1,10 @@
+{
+    "revealjs.exportHTMLPath": "./docs",
+    "revealjs.highlightTheme": "Github",
+    "revealjs.notesSeparator": "Note:",
+    "revealjs.parallaxBackgroundHorizontal": 0,
+    "revealjs.parallaxBackgroundVertical": 0,
+    "revealjs.separator": "^\\r?\\n---\\r?\\n$",
+    "revealjs.theme": "beige",
+    "revealjs.verticalSeparator": "^\\r?\\n--\\r?\\n$"
+}
