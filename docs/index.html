@@ -96,7 +96,7 @@
 
   <!-- Theme used for syntax highlighting of code -->
   
-  <link rel="stylesheet" href="libs/highlight.js/9.12.0/monokai.css">
+  <link rel="stylesheet" href="libs/highlight.js/9.12.0/github.css">
   
 
   
@@ -308,9 +308,9 @@
 
 
     
-        <section data-background-image="images/pharo.png" data-background-position="90% 10%" data-background-repeat="no-repeat" data-background-size="60% auto" data-background-opacity="0.8">
+        <section data-background-image="images/pharo.png" data-background-position="90% 10%" data-background-repeat="no-repeat" data-background-size="40% auto" data-background-opacity="0.8">
             
-            <!-- .slide: data-background-image="images/pharo.png" data-background-position="90% 10%" data-background-repeat="no-repeat" data-background-size="60% auto" data-background-opacity="0.8" -->
+            <!-- .slide: data-background-image="images/pharo.png" data-background-position="90% 10%" data-background-repeat="no-repeat" data-background-size="40% auto" data-background-opacity="0.8" -->
 <h1><a id="user-content-pharo" class="anchor" href="#pharo" aria-hidden="true"></a>Pharo</h1>
 <ul>
 <li>Language (inspired by Smalltalk)</li>
@@ -331,18 +331,9 @@
     
         <section >
             
-            <h1><a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true"></a>Overview</h1>
-<table>
-<thead>
-<tr></tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="https://www.plantuml.com/plantuml/svg/JO_13e9034Jl_OeUyHVmeZ6QI20XCH8l71eekhfioUv2ebzlGGxUEfatayukHF9nx2t0SW6a1okECQE9SF3ov2Pk8LraaD4tZ8sqN4DQaWyh5mLxUZ6UziNvXhtw5fEA_SJ6SRRHV74vOcVidCk5sfMH3l-APqn4EulPhA4J_uAqCc4aQpxyoq1IMdBnMkHQEnD8Tp9Ets6liaToPD_110KVv4KfTkrIfGjbW9rAtVi5" class="reveal stretch plain"></td>
-<td>Example from my blog <br/><a href="https://fuhrmanator.github.io/2019/07/29/AnalyzingJavaWithMoose.html">Analyzing Java with Moose 8</a></td>
-</tr>
-</tbody>
-</table>
+            <h2><a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true"></a>Overview</h2>
+<img src="https://www.plantuml.com/plantuml/svg/JO_13e9034Jl_OeUyHVmeZ6QI20XCH8l71eekhfioUv2ebzlGGxUEfatayukHF9nx2t0SW6a1okECQE9SF3ov2Pk8LraaD4tZ8sqN4DQaWyh5mLxUZ6UziNvXhtw5fEA_SJ6SRRHV74vOcVidCk5sfMH3l-APqn4EulPhA4J_uAqCc4aQpxyoq1IMdBnMkHQEnD8Tp9Ets6liaToPD_110KVv4KfTkrIfGjbW9rAtVi5" class="reveal stretch plain">
+<p>Example from my blog <br/><a href="https://fuhrmanator.github.io/2019/07/29/AnalyzingJavaWithMoose.html">Analyzing Java with Moose 8</a></p>
 
             </section>
     
@@ -352,8 +343,82 @@
     
         <section >
             
+            <h1><a id="user-content-preliminaries" class="anchor" href="#preliminaries" aria-hidden="true"></a>Preliminaries</h1>
+<ul>
+<li><a href="http://pharo.org/download">Install and run the Pharo Launcher</a>.</li>
+<li>Copy <code>Moose-8</code> image from the Inria CI:
+<strong>New Image Templates &gt; Official distributions &gt; Moose Suite 8.0 (development version) &gt; Create image</strong></li>
+<li>Launch the image once it has downloaded.</li>
+</ul>
+<img src="images/pharo-launcher.png" class="plain reveal stretch">
+
+            </section>
+    
+
+
+
+    
+    <section>
+        <section >
             <h2><a id="user-content-cloning-a-project-from-github" class="anchor" href="#cloning-a-project-from-github" aria-hidden="true"></a>Cloning a project from GitHub</h2>
 <img src="https://www.plantuml.com/plantuml/svg/JP312i9034Jl-Og05_s5Ub54GR4WYCMBXzYckZRToEwse5zlMZruop1lXYIBc2YahXM0SGAOYBlTqrKwpbQYdd57FU4pw8FBDF-tHoDg5qh6KYk-G7QW47-9fDXImxXPvjipjkOBJWiEFJlFkzaSilounjh9aDihLJz6Q_mh7Z1Lwym7ymArXWQomiMEnBtvcu7fGSYdKxwtse50kf7pjWu7aosI9tb55msyKr2Zs5TZbLsjJrYOj1zy0000" class="reveal stretch plain">
+
+            </section>
+        
+            <section >
+                <h2><a id="user-content-cloning-a-project-from-github-1" class="anchor" href="#cloning-a-project-from-github-1" aria-hidden="true"></a>Cloning a project from GitHub</h2>
+<p>Clone with <code>MooseEasyUtility</code></p>
+<p>In a Moose Playground (<kbd>CTRL</kbd>+<kbd>O</kbd>+<kbd>W</kbd>):</p>
+<pre><code class="language-smalltalk">javaProjectFileRef := MooseEasyUtility cloneGitHubRepo:
+    'https://github.com/bethrobson/Head-First-Design-Patterns'.
+</code></pre>
+
+            </section>
+        
+
+    </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-creating-a-moose-model" class="anchor" href="#creating-a-moose-model" aria-hidden="true"></a>Creating a Moose Model</h2>
+<img src="https://www.plantuml.com/plantuml/svg/JP11Yy9038Nl-HM1lUXV62ykiWih3XHanKiFiKrrR3gHcMb1V_t6hWTlUUHxxv6iSw5Kna40vWd0RKGZuvOcmblIApTb1MwMMSVKC3RQSWqV4iwNSfAHNKKflnn5SQ2UyVlJ_nnnC59mSU0qSOYyNQxURNx_XLqGot8xfVP5QuTlPLRjLItTFvSrT9fwS8UGHvBmu7yFB2gXM7xzpWgU1DAPGWHNSJ8v84MIUmxPm0ibDOfZEqVPrNg3jKdxmHy0" class="reveal stretch plain">
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-loading-model-in-moose" class="anchor" href="#loading-model-in-moose" aria-hidden="true"></a>Loading model in Moose</h2>
+<img src="https://www.plantuml.com/plantuml/svg/JP313W5138RlVOecBhp2k10X8IQH275ngDqkGtSgCxCIdbuj1xV-wVVtRpl9XLBfMW7eAm0t4usCAteGtfDUkIfZSBtCsgMAiTAQZ-0sbFAFAuejtHWNKxyyO6jzmU6UquD3vDN8_7uxnoQ8-GOIpfToaexTMgd-qThWNyJud_AgbkC_s14QJJTm-v0xal3Yhnk66w5OTdvjKHy2wKmXsegSJBP8aUIPGpRmGacDubZte-nglSF4fFtW3G00" class="reveal stretch plain">
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-visualizing-the-model-uml" class="anchor" href="#visualizing-the-model-uml" aria-hidden="true"></a>Visualizing the model (UML)</h2>
+<img src="https://www.plantuml.com/plantuml/svg/JO_12i9034Jl-Og0b_eBzQA8Wc914CMBXzYckZRTbDsje5zlMZruov0taymy9WgfRmLWd03ofQXdtDAJi0lwu3BD81zbr3wKZALMV85yJo7-kAJOKiEuNXIRCxQs5ynE79xiF6-dvYyEAwoT3BwTKlLZjCQ_u05JjSnYM5wWrj30HDpjdgxIStvoiITnR_ww8TiB-NGiTdPWO95kvBmzni5aY-H9Nj550-yKr2ZsrHXgNRM3kKbh_W40" class="reveal stretch plain">
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-analyzing-the-model" class="anchor" href="#analyzing-the-model" aria-hidden="true"></a>Analyzing the model</h2>
+<img src="https://www.plantuml.com/plantuml/svg/JOz12i9034NtEKN0ZLvXt2YYe5WeYEB6HMnJ7KqdCZCLzFIcrOMxVFvx7p9BcMBkMW4OBW2t40sC6teIFgBUkCfJS4DCsiMAiTAQJ-1AYkd7PSMMxeohUR4-OckzuFZ0ySa-y6PYVh5ROkEbzxPAzO_H1l-6UqpLDek-F46ZyGxku5D7uj_yTM1S2eMyBxOssnD85_81Hk8lrtoMZbt9qOeMAP2yaa-cN2cgyHpgOTH-rGVCBDhd7m00" class="reveal stretch plain">
 
             </section>
     
