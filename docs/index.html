@@ -283,7 +283,7 @@
 <p>Christopher FUHRMAN<br/>
 Professor in Software and IT Engineering<br/>
 École de technologie supérieure (ETS)</p>
-<p>Slides supporting <a href="https://fuhrmanator.github.io/2019/07/29/AnalyzingJavaWithMoose.html">this blog entry</a>.</p>
+<p><span style="background-color:lightgreen"><code>tiny.cc/moose-tuto</code></span> supporting <a href="https://fuhrmanator.github.io/2019/07/29/AnalyzingJavaWithMoose.html">this blog entry</a>.</p>
 
             </section>
     
@@ -411,13 +411,13 @@ In a Moose Playground (<kbd>CTRL</kbd>+<kbd>O</kbd>+<kbd>W</kbd>):</p>
     
     <section>
         <section >
-            <h2><a id="user-content-creating-a-moose-model" class="anchor" href="#creating-a-moose-model" aria-hidden="true"></a>Creating a Moose Model</h2>
+            <h2><a id="user-content-creating-a-moose-model-famix" class="anchor" href="#creating-a-moose-model-famix" aria-hidden="true"></a>Creating a Moose Model (FAMIX)</h2>
 <img src="https://www.plantuml.com/plantuml/svg/JP11Yy9038Nl-HM1lUXV62ykiWih3XHanKiFiKrrR3gHcMb1V_t6hWTlUUHxxv6iSw5Kna40vWd0RKGZuvOcmblIApTb1MwMMSVKC3RQSWqV4iwNSfAHNKKflnn5SQ2UyVlJ_nnnC59mSU0qSOYyNQxURNx_XLqGot8xfVP5QuTlPLRjLItTFvSrT9fwS8UGHvBmu7yFB2gXM7xzpWgU1DAPGWHNSJ8v84MIUmxPm0ibDOfZEqVPrNg3jKdxmHy0" class="reveal stretch plain">
 
             </section>
         
             <section >
-                <h2><a id="user-content-creating-a-moose-model-1" class="anchor" href="#creating-a-moose-model-1" aria-hidden="true"></a>Creating a Moose Model</h2>
+                <h2><a id="user-content-creating-a-moose-model-famix-1" class="anchor" href="#creating-a-moose-model-famix-1" aria-hidden="true"></a>Creating a Moose Model (FAMIX)</h2>
 <p>We will parse Java source to a Moose Model using <a href="https://github.com/moosetechnology/VerveineJ">VerveineJ</a>.</p>
 <ol>
 <li>Install VerveineJ in a Moose Playground as follows:</li>
@@ -432,7 +432,7 @@ In a Moose Playground (<kbd>CTRL</kbd>+<kbd>O</kbd>+<kbd>W</kbd>):</p>
             </section>
         
             <section >
-                <h2><a id="user-content-creating-a-moose-model-2" class="anchor" href="#creating-a-moose-model-2" aria-hidden="true"></a>Creating a Moose Model</h2>
+                <h2><a id="user-content-creating-a-moose-model-famix-2" class="anchor" href="#creating-a-moose-model-famix-2" aria-hidden="true"></a>Creating a Moose Model (FAMIX)</h2>
 <ol start="2">
 <li>Start the <code>FamixMaker</code> tool in the menu <strong>Moose &gt; Moose Tools &gt; Famix Maker</strong> to produce a <code>tmp/HFDP.mse</code> Moose Model</li>
 </ol>
@@ -544,7 +544,44 @@ mseStream
         
             <section >
                 <h2><a id="user-content-analyzing-the-model-2" class="anchor" href="#analyzing-the-model-2" aria-hidden="true"></a>Analyzing the model</h2>
-<p>Explore the <code>&lt;scripts&gt;</code> in</p>
+<p><code>&lt;scripts &gt;</code> in <code>OOAnalysis/OOCriticsVisu</code>:</p>
+<img src="images/OOAnalysisScripts.gif" class="plain reveal stretch">
+
+            </section>
+        
+            <section >
+                <h2><a id="user-content-analyzing-the-model-3" class="anchor" href="#analyzing-the-model-3" aria-hidden="true"></a>Analyzing the model</h2>
+<p>Write your own analyses in Pharo/Moose.</p>
+<p>Learn more Pharo:</p>
+<ul>
+<li><a href="http://mooc.pharo.org/">Pharo MOOC</a></li>
+<li>Pharo on <a href="https://exercism.io/tracks/pharo-smalltalk">exercism.io</a></li>
+<li><a href="https://books.pharo.org/updated-pharo-by-example/">Pharo By Example</a> book</li>
+<li><a href="https://sites.google.com/etsmtl.net/mgl843">MGL843 Sujets avancés en conception logicielle</a> (master’s course at ÉTS)</li>
+</ul>
+
+            </section>
+        
+            <section >
+                <h2><a id="user-content-analyzing-the-model-4" class="anchor" href="#analyzing-the-model-4" aria-hidden="true"></a>Analyzing the model</h2>
+<p>Write your own analyses in Pharo/Moose.</p>
+<p>Learn more <a href="https://moosetechnology.org/">Moose</a>:</p>
+<ul>
+<li><a href="https://moosequery.ferlicot.fr/devdocumentation.html">MooseQuery</a> for advanced queries in Moose models</li>
+<li><a href="https://github.com/fuhrmanator/GitMiner">GitMiner</a> has a few classes to do static analysis</li>
+</ul>
+
+            </section>
+        
+            <section >
+                <h2><a id="user-content-analyzing-the-model-5" class="anchor" href="#analyzing-the-model-5" aria-hidden="true"></a>Analyzing the model</h2>
+<p>Write your own analyses in Pharo/Moose.</p>
+<p>Analyze other languages (experimental):</p>
+<ul>
+<li>C# - <a href="https://github.com/feenkcom/roslyn2famix">roslyn2famix</a></li>
+<li>C++ - <a href="https://github.com/jecisc/VerveineC-Cpp/">VerveineC-Cpp</a> was started but not quite finished</li>
+<li>Fortran - <a href="https://github.com/NicolasAnquetil/VerveineF">VerveineF</a></li>
+</ul>
 
             </section>
         
