@@ -5,11 +5,12 @@ transition: "convex"
 backgroundTransition: "convex"
 logoImg: "https://www.etsmtl.ca/getmedia/4efcf5f0-b7ec-4429-a5d8-28fd4571039c/ETS-rouge-devise-ecran-fond_transparent"
 slideNumber: true
-controlsTutorial: false
+# controlsTutorial: false
 separator: '^\r?\n---\r?\n$'
 verticalSeparator: '^\r?\n--\r?\n$'
 progress: true 
 pdfMaxPagesPerSlide: 1
+margin: 0
 
 ---
 
